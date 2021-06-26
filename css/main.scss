@@ -1,0 +1,178 @@
+*,
+*::after,
+*::before {
+  border: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+// To be the size of 90% of the cell
+$size: 100px;
+$iconSize: calc(#{$size} * 0.9);
+$iconRoundSize: calc(#{$iconSize} * 0.7);
+
+/*  General Styles  */
+
+body {
+  margin: 0;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+}
+
+.boardGame {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  // align items in cells at the center
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  //   position: relative;
+  cursor: pointer;
+}
+
+// Remove all borders by selecting right cells
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+// 3 x 0 + 1... all the left cells
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+//
+.cell.x,
+.cell.round {
+  cursor: not-allowed;
+}
+
+// Making X form, from scratch
+.cell.x::before,
+.cell.x::after,
+// Condition to protect cells with icons
+.boardGame.x .cell:not(.x):not(.round):hover::before,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+  content: "";
+  position: absolute;
+  width: calc(100px * 0.15);
+  height: $iconSize;
+  background-color: black;
+  margin-top: 4px;
+}
+
+.cell.x::before,
+.boardGame.x .cell:not(.x):not(.round):hover::before {
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+.cell.x::after,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+}
+
+// Making O form, from scratch
+.cell.round::before,
+.cell.round::after,
+.boardGame.round .cell:not(.x):not(.round):hover::before,
+.boardGame.round .cell:not(.x):not(.round):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+
+.cell.round::before,
+.boardGame.round .cell:not(.x):not(.round):hover::before {
+    width: $iconSize;
+    height: $iconSize;
+    background-color: black;
+}
+
+.cell.round::after,
+.boardGame.round .cell:not(.x):not(.round):hover::after {
+    position: relative;
+    width: $iconRoundSize;
+    height: $iconRoundSize;
+    background-color: white;
+    top: 13.5px;
+}
+
+.boardGame.x .cell:not(.x):not(.round):hover::before,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+    background-color: grey;
+}
+
+.boardGame.round .cell:not(.x):not(.round):hover::before {
+    background-color: gray;
+}
+
+.message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column ;
+}
+
+.message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 2px solid black;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 8%;
+}
+
+.message button:hover {
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+}
+
+
+
+// End

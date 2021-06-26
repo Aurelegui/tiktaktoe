@@ -1,0 +1,185 @@
+*,
+*::after,
+*::before {
+  border: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*  General Styles  */
+body {
+  margin: 0;
+}
+
+#title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+}
+
+.boardGame {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell.x,
+.cell.round {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.boardGame.x .cell:not(.x):not(.round):hover::before,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+  content: "";
+  position: absolute;
+  width: calc(100px * 0.15);
+  height: calc(100px * 0.9);
+  background-color: black;
+  margin-top: 4px;
+}
+
+.cell.x::before,
+.boardGame.x .cell:not(.x):not(.round):hover::before {
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
+
+.cell.x::after,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+}
+
+.cell.round::before,
+.cell.round::after,
+.boardGame.round .cell:not(.x):not(.round):hover::before,
+.boardGame.round .cell:not(.x):not(.round):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.cell.round::before,
+.boardGame.round .cell:not(.x):not(.round):hover::before {
+  width: calc(100px * 0.9);
+  height: calc(100px * 0.9);
+  background-color: black;
+}
+
+.cell.round::after,
+.boardGame.round .cell:not(.x):not(.round):hover::after {
+  position: relative;
+  width: calc(calc(100px * 0.9) * 0.7);
+  height: calc(calc(100px * 0.9) * 0.7);
+  background-color: white;
+  top: 13.5px;
+}
+
+.boardGame.x .cell:not(.x):not(.round):hover::before,
+.boardGame.x .cell:not(.x):not(.round):hover::after {
+  background-color: grey;
+}
+
+.boardGame.round .cell:not(.x):not(.round):hover::before {
+  background-color: gray;
+}
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 2px solid black;
+  padding: 15px 25px;
+  cursor: pointer;
+  border-radius: 8%;
+}
+
+.message button:hover {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+/*# sourceMappingURL=main.css.map */
